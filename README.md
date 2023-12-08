@@ -1,37 +1,23 @@
-# Envio automatico pelo Gmail
-# Configurações de e-mail
-de = 'leonardorfragoso@gmail.com'
-para = 'leonardorfragoso2@gmail.com'
-senha = 'xxxxxxxxxxxxxxxxxxxxxx'
-assunto = 'Bases compiladas'
-mensagem = 'Automação para Compilar bases de dados em uma unica planila de Excel e enviar automaticamente por email.'
+# Automação de Compilação e Envio de Dados
 
-# Configuração do servidor SMTP do Gmail
-servidor_smtp = 'smtp.gmail.com'
-porta = 587
+Este projeto é uma automação que compila várias bases de dados em uma única planilha do Excel e a envia automaticamente por e-mail.
 
-# Crie uma mensagem de e-mail
-mensagem_email = MIMEMultipart()
-mensagem_email['From'] = de
-mensagem_email['To'] = para
-mensagem_email['Subject'] = assunto
-mensagem_email.attach(MIMEText(mensagem, 'plain'))
+## Como usar
 
-# Anexando um arquivos
-caminho = os.getcwd()
-arquivo_anexo = os.path.join(caminho, "Vendas.xlsx")
-with open(arquivo_anexo, 'rb') as arquivo:
-    part = MIMEApplication(arquivo.read(), _subtype="pdf")
-part.add_header('Content-Disposition', 'attachment', filename=arquivo_anexo)
-mensagem_email.attach(part)
+1. Coloque todos os arquivos de dados que deseja compilar na pasta "bases".
+2. Execute o script Python.
+3. O script irá compilar todos os dados em uma única planilha do Excel chamada "Vendas.xlsx".
+4. Em seguida, o script enviará automaticamente um e-mail com a planilha anexada.
 
-# Conectando ao servidor SMTP e enviando o e-mail
-try:
-    servidor = smtplib.SMTP(servidor_smtp, porta)
-    servidor.starttls()
-    servidor.login(de, senha)
-    servidor.sendmail(de, para, mensagem_email.as_string())
-    servidor.quit()
-    print('E-mail enviado com sucesso')
-except Exception as e:
-    print('Erro ao enviar o e-mail:', str(e))
+## Dependências
+
+Este projeto depende das seguintes bibliotecas Python:
+
+- os
+- pandas
+- smtplib
+- email.mime.multipart
+- email.mime.text
+- email.mime.application
+
+Por favor, consulte o arquivo requirements.txt para as versões exatas dessas bibliotecas.
