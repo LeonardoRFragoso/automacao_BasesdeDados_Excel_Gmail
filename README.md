@@ -2,7 +2,7 @@
 # Configurações de e-mail
 de = 'leonardorfragoso@gmail.com'
 para = 'leonardorfragoso2@gmail.com'
-senha = 'ppwbgavdaaaowxeo'
+senha = 'xxxxxxxxxxxxxxxxxxxxxx'
 assunto = 'Bases compiladas'
 mensagem = 'Automação para Compilar bases de dados em uma unica planila de Excel e enviar automaticamente por email.'
 
